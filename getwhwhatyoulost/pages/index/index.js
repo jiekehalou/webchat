@@ -4,8 +4,10 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    motto: '失物招领',
+    mottoDes: '----',
     userInfo: {},
+    position:[],//位置信息
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -42,6 +44,7 @@ Page({
         }
       })
     }
+    this.getPosition()
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -49,6 +52,24 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  getPosition(){
+    wx.getLocation({
+      type: 'wgs84',
+      success: (res) => {
+        var latitude = res.latitude // 纬度
+        var longitude = res.longitude // 经度
+        // console.log("positionInfo",res)
+        this.setData({
+          position: [longitude,latitude],
+        })
+      },
+      fail:()=>{
+        this.setData({
+          position: [],
+        })
+      }
     })
   }
 })

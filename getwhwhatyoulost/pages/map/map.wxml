@@ -1,0 +1,33 @@
+<map class="bg" latitude="{{latitude}}" longitude="{{longitude}}" />
+<view class="des-panel">
+  <view>
+    <text> {{weatherInfo.city}} {{weatherInfo.district}}</text>
+  </view>
+  <view>
+    <text>{{weatherInfo.infos.weather}} {{weatherInfo.infos.wind_direction}} {{weatherInfo.infos.wind_power}}</text>
+  </view>
+</view>
+<view class="search-wrp" style="padding-top: {{menuRect.bottom + menuRect.height}}px;">
+  <view class="search">
+    <image class="location" src="../../images/pokemon_location.png" />
+    <view class="input">Search here</view>
+    <image class="headImg" src="{{headImg}}" mode="aspectFill" />
+  </view>
+</view>
+<!-- <draggable-sheet class="sheet" style="height: {{sheetHeight}}px;" initial-child-size="{{minSize}}" min-child-size="{{minSize}}" max-child-size="{{maxSize}}" snap="{{false}}" snap-sizes="{{[]}}" worklet:onsizeupdate="onSizeUpdate">
+  <scroll-view associative-container="draggable-sheet" class="scrollable" scroll-y type="custom" show-scrollbar="{{false}}">
+    <sticky-section>
+      <sticky-header>
+        <view class="bar">
+          <view class="indicator" />
+        </view>
+        <view class="row title">
+          <text>Latest in the area</text>
+          <view class="outer-circle center">
+            <view class="inner-circle" />
+          </view>
+        </view>
+      </sticky-header>
+    </sticky-section>
+  </scroll-view>
+</draggable-sheet> -->

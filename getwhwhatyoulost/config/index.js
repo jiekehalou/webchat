@@ -1,0 +1,3 @@
+const KEY ='VUDBZ-ZUO6M-IYQ6P-6PMDU-7WTKE-LLBDS'
+
+export {KEY}
