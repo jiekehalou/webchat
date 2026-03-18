@@ -33,7 +33,7 @@
     "useMultiFrameRuntime": true
   },
   "compileType": "miniprogram",
-  "libVersion": "3.8.11",
+  "libVersion": "3.14.3",
   "appid": "wx9eff28b88191dc9c",
   "projectname": "lostandfind",
   "condition": {
