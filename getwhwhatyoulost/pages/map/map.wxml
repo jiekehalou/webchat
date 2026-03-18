@@ -1,4 +1,6 @@
-<map class="bg" latitude="{{latitude}}" longitude="{{longitude}}" />
+<map class="bg" show-compass="true" bindtap="onMapClick" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" 
+
+polyline="{{polylines}}" />
 <view class="des-panel">
   <view>
     <text> {{weatherInfo.city}} {{weatherInfo.district}}</text>
@@ -11,7 +13,7 @@
   <view class="search">
     <image class="location" src="../../images/pokemon_location.png" />
     <view class="input">Search here</view>
-    <image class="headImg" src="{{headImg}}" mode="aspectFill" />
+    <image class="headImg" src="../../images/head.png" mode="aspectFill" />
   </view>
 </view>
 <!-- <draggable-sheet class="sheet" style="height: {{sheetHeight}}px;" initial-child-size="{{minSize}}" min-child-size="{{minSize}}" max-child-size="{{maxSize}}" snap="{{false}}" snap-sizes="{{[]}}" worklet:onsizeupdate="onSizeUpdate">
