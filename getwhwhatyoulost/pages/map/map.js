@@ -1,16 +1,22 @@
 // pages/map/map.js
-import { KEY } from "../../config/index.js"
+import {
+  KEY
+} from "../../config/index.js"
 
-const { windowHeight } = wx.getSystemInfoSync()
+const {
+  windowHeight
+} = wx.getSystemInfoSync()
 const menuRect = wx.getMenuButtonBoundingClientRect()
 const sheetHeight = (windowHeight - menuRect.height) * 0.5
 console.log('KEY', KEY)
+// console.log('menuRect:', menuRect)
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    searchInput:"",
     latitude: 39.9,
     longitude: 116.38,
     menuRect,
@@ -22,27 +28,27 @@ Page({
     },
     markers: [
 
-    ], polylines: [
-      {
-        points: [{
-          longitude: 113.67739,
-          latitude: 34.75381,
-        }, {
-          longitude: 112.67739,
-          latitude: 34.75381,
-        }],
-        color: '#58c16c',
-        width: 6,
-        borderColor: '#2f693c',
-        borderWidth: 1
-      }
-    ]
+    ],
+    polylines: [{
+      points: [{
+        longitude: 113.67739,
+        latitude: 34.75381,
+      }, {
+        longitude: 112.67739,
+        latitude: 34.75381,
+      }],
+      color: '#58c16c',
+      width: 6,
+      borderColor: '#2f693c',
+      borderWidth: 1
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
+    console.log('onLoad')
     await this.getPosition()
   },
 
@@ -91,46 +97,49 @@ Page({
     })
   },
   addMark(res) {
-    let { longitude: lon, latitude: lat } = res
+    let {
+      longitude: lon,
+      latitude: lat
+    } = res
     console.log('lon', lon)
     console.log('lat', lat)
-   
+
     let markers = [{
-      id: Date.now(),
-      latitude: lat,
-      longitude: lon,
-      iconPath: "/images/pin.png",
-      width: 48,
-      height: 48,
-      callout: {
-        content: `当前位置`,
-        display: 'ALWAYS',
-        color: '#333',
-        fontSize: 14,
-        borderWidth: 2,
-        borderRadius: 10,
-        bgColor: '#fff',
-        padding: 5,
+        id: Date.now(),
+        latitude: lat,
+        longitude: lon,
+        iconPath: "/images/pin.png",
+        width: 48,
+        height: 48,
+        callout: {
+          content: `当前位置`,
+          display: 'ALWAYS',
+          color: '#333',
+          fontSize: 14,
+          borderWidth: 2,
+          borderRadius: 10,
+          bgColor: '#fff',
+          padding: 5,
+        }
+      },
+      {
+        id: Date.now(),
+        latitude: 33.62,
+        longitude: 113.37,
+        iconPath: "/images/pin.png",
+        width: 48,
+        height: 48,
+        callout: {
+          content: `目的地`,
+          display: 'ALWAYS',
+          color: '#333',
+          fontSize: 14,
+          borderWidth: 2,
+          borderRadius: 10,
+          bgColor: '#fff',
+          padding: 5,
+        }
       }
-    },
-    {
-      id: Date.now(),
-      latitude: 33.62,
-      longitude: 113.37,
-      iconPath: "/images/pin.png",
-      width: 48,
-      height: 48,
-      callout: {
-        content: `目的地`,
-        display: 'ALWAYS',
-        color: '#333',
-        fontSize: 14,
-        borderWidth: 2,
-        borderRadius: 10,
-        bgColor: '#fff',
-        padding: 5,
-      }
-    }
     ]
     console.log('markers', markers)
     this.setData({
@@ -139,11 +148,14 @@ Page({
       console.log(this.data)
     })
   },
-  onMapClick(e){
-    const { latitude, longitude } = e.detail;
+  onMapClick(e) {
+    const {
+      latitude,
+      longitude
+    } = e.detail;
     // his.reverseGeocode(latitude, longitude); // 调用逆地理编码
-    console.log( longitude,latitude,)
-    console.log('onMapClick',e)
+    console.log(longitude, latitude, )
+    console.log('onMapClick', e)
   },
   reverseGeocode(lat, lng) {
     wx.request({
@@ -153,14 +165,15 @@ Page({
       }
     });
   },
-  
+
   async getPosition() {
     wx.getLocation({
       type: 'wgs84',
       success: (res) => {
+        console.log('res', res)
         var latitude = res.latitude // 纬度
         var longitude = res.longitude // 经度
-        // console.log("positionInfo",res)
+        console.log("positionInfo", res)
         this.setData({
           longitude,
           latitude
@@ -169,12 +182,17 @@ Page({
           this.getWeather()
         })
       },
-      fail: () => {
+      fail: (err) => {
+        console.error('获取位置失败', err);
         this.setData({
           longitude: null,
           latitude: null,
         })
       }
     })
+  },
+  onSearch(e) {
+    let {searchInput} = this.data;
+    console.log('onSearch',searchInput)
   }
 })

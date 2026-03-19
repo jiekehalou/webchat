@@ -6,6 +6,10 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+    //获取小程序启动时的参数 场景等
+    const options = wx.getLaunchOptionsSync()
+    console.log('场景:',options?.scene)
+
     // 登录
     wx.login({
       success: res => {
@@ -24,7 +28,7 @@ App({
     // 获取用户信息
     wx.getSetting({
       success: res => {
-        console.log('getSetting-res:', res.userInfo)
+        console.log('getSetting-res:', res)
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
 

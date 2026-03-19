@@ -1,6 +1,4 @@
-<map class="bg" show-compass="true" bindtap="onMapClick" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" 
-
-polyline="{{polylines}}" />
+<map class="bg" show-compass="true" bindtap="onMapClick" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" polyline="{{polylines}}" />
 <view class="des-panel">
   <view>
     <text> {{weatherInfo.city}} {{weatherInfo.district}}</text>
@@ -9,11 +7,11 @@ polyline="{{polylines}}" />
     <text>{{weatherInfo.infos.weather}} {{weatherInfo.infos.wind_direction}} {{weatherInfo.infos.wind_power}}</text>
   </view>
 </view>
-<view class="search-wrp" style="padding-top: {{menuRect.bottom + menuRect.height}}px;">
+<view class="search-wrp" style="padding-top: {{menuRect.bottom + menuRect.height/2}}px;">
   <view class="search">
     <image class="location" src="../../images/pokemon_location.png" />
-    <view class="input">Search here</view>
-    <image class="headImg" src="../../images/head.png" mode="aspectFill" />
+    <input class="input" model:value="{{searchInput}}" data-field="searchInput" auto-focus placeholder="搜索" />
+    <button class="mini-btn" type="warn" size="mini" bindtap="onSearch">搜索</button>
   </view>
 </view>
 <!-- <draggable-sheet class="sheet" style="height: {{sheetHeight}}px;" initial-child-size="{{minSize}}" min-child-size="{{minSize}}" max-child-size="{{maxSize}}" snap="{{false}}" snap-sizes="{{[]}}" worklet:onsizeupdate="onSizeUpdate">
