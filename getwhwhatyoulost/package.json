@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@tmsfe/tms-ui": "^1.0.142"
+    "@tmsfe/tms-ui": "^1.0.142",
+    "@vant/weapp": "^1.11.7"
   }
 }

@@ -45,6 +45,8 @@
   },
   "lazyCodeLoading": "requiredComponents",
     "usingComponents": {
-      "tms-button": "@tmsfe/tms-ui/button/index"
+      "tms-button": "@tmsfe/tms-ui/button/index",
+      "van-button": "@vant/weapp/button/index",
+      "van-cell": "@vant/weapp/cell/index"
     }
 }

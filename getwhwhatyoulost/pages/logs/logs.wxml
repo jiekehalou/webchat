@@ -1,7 +1,10 @@
 <!--logs.wxml-->
 <view class="container log-list">
-  <tms-button type="primary" bind:click="handleClick">这是一个按钮</tms-button>
+  <tms-button type="primary" bind:click="handleClick">tms-按钮</tms-button>
+  <van-button type="primary" size="small" round >van-按钮</van-button>
+
   <block wx:for="{{logs}}" wx:for-item="log" wx:key="index">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
+    <!-- <text class="log-item">{{index + 1}}. {{log}}</text> -->
+    <van-cell title="{{index + 1}}" value="{{log}}" style="width:750rpx"/>
   </block>
 </view>
