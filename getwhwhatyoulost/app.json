@@ -4,6 +4,7 @@
     "pages/logs/logs",
     "pages/map/map"
   ],
+  "entryPagePath": "pages/logs/logs",
   "requiredPrivateInfos": [
     "getLocation",
     "onLocationChange",
@@ -19,7 +20,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#07C160",
     "navigationBarTitleText": "lost and find",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "pageOrientation": "auto"
   },
   "networkTimeout": {
     "request": 10000,
@@ -41,5 +43,8 @@
       }
     ]
   },
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+    "usingComponents": {
+      "tms-button": "@tmsfe/tms-ui/button/index"
+    }
 }
