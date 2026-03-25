@@ -1,10 +1,12 @@
 <!--logs.wxml-->
 <view class="container log-list">
-  <tms-button type="primary" bind:click="handleClick">tms-按钮</tms-button>
-  <van-button type="primary" size="small" round >van-按钮</van-button>
+  <tms-button type="primary" bind:click="handleQuery">查询</tms-button>
+  <tms-button type="primary" bind:click="handleUpdate">更新</tms-button>
+  <van-button type="danger" bind:click="handelDel" size="small" round>删除</van-button>
+  <van-button type="primary" bind:click="handleAdd" size="small" round>新增云数据</van-button>
 
   <block wx:for="{{logs}}" wx:for-item="log" wx:key="index">
     <!-- <text class="log-item">{{index + 1}}. {{log}}</text> -->
-    <van-cell title="{{index + 1}}" value="{{log}}"  style="width:750rpx"/>
+    <van-cell title="{{index + 1}}" value="{{log.name}}" style="width:750rpx" />
   </block>
 </view>
