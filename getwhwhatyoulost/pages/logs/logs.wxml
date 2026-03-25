@@ -5,6 +5,6 @@
 
   <block wx:for="{{logs}}" wx:for-item="log" wx:key="index">
     <!-- <text class="log-item">{{index + 1}}. {{log}}</text> -->
-    <van-cell title="{{index + 1}}" value="{{log}}" style="width:750rpx"/>
+    <van-cell title="{{index + 1}}" value="{{log}}"  style="width:750rpx"/>
   </block>
 </view>
