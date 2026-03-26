@@ -1,8 +1,31 @@
 .log-list {
-  display: flex;
-  flex-direction: column;
   padding: 40rpx;
 }
+
+.top-p {
+  width: 750rpx;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .log-item {
+  width: 750rpx;
+  display: flex;
   margin: 10rpx;
+  border-bottom: 1px solid #ebedf0;
+}
+
+.time {
+  flex: 1;
+  padding: 0 6rpx;
+  text-align: right;
+}
+
+.item-span {
+  color: #666;
+  padding: 0 6rpx;
+}
+
+.item-span-w2 {
+  width: 220rpx;
 }

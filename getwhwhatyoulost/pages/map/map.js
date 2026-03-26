@@ -5,7 +5,7 @@ import {
 
 const {
   windowHeight
-} = wx.getSystemInfoSync()
+} = wx.getDeviceInfo()
 const menuRect = wx.getMenuButtonBoundingClientRect()
 const sheetHeight = (windowHeight - menuRect.height) * 0.5
 console.log('KEY', KEY)

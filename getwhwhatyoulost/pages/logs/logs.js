@@ -3,6 +3,7 @@ const util = require('../../utils/util.js')
 
 Page({
   data: {
+    loading: [false, false, false, false], //增删改查
     logs: []
   },
   cloudInit() {
@@ -13,6 +14,9 @@ Page({
     })
   },
   handelDel() {
+    this.setData({
+      'loading[1]': true
+    })
     // 调用云函数
     let id = this.data.logs[0]?._id
     console.log('handelDel', id)
@@ -23,14 +27,23 @@ Page({
         TYPE: "delete", //add update delete 默认''查询
       },
       success: (res) => {
+        this.setData({
+          'loading[1]': false
+        })
         this.handleQuery()
       },
       fail: (err) => {
+        this.setData({
+          'loading[1]': false
+        })
         console.error('调用失败：', err)
       }
     })
   },
   handleUpdate() {
+    this.setData({
+      'loading[2]': true
+    })
     // 调用云函数
     let id = this.data.logs[0]?._id
     console.log('更新', id)
@@ -43,14 +56,23 @@ Page({
         TYPE: "update", //add update delete 默认''查询
       },
       success: (res) => {
+        this.setData({
+          'loading[2]': false
+        })
         this.handleQuery()
       },
       fail: (err) => {
+        this.setData({
+          'loading[2]': false
+        })
         console.error('调用失败：', err)
       }
     })
   },
   handleQuery() {
+    this.setData({
+      'loading[3]': true
+    })
     // 调用云函数
     wx.cloud.callFunction({
       name: 'helloWorld', // 云函数名称
@@ -61,15 +83,27 @@ Page({
         // res.result 就是云函数 return 的数据
         let arr = res.result?.data || []
         this.setData({
-          logs: arr
+          logs: arr.map(o => ({
+            ...o,
+            createTimeFormat: new Date(o.createTime).toISOString().slice(0, 16).replace('T', ' ')
+          }))
+        })
+        this.setData({
+          'loading[3]': false
         })
       },
       fail: (err) => {
+        this.setData({
+          'loading[3]': false
+        })
         console.error('调用失败：', err)
       }
     })
   },
   handleAdd() {
+    this.setData({
+      'loading[0]': true
+    })
     // 调用云函数
     wx.cloud.callFunction({
       name: 'helloWorld', // 云函数名称
@@ -80,10 +114,16 @@ Page({
       },
       success: (res) => {
         // console.log('云函数返回结果：', res.result)
+        this.setData({
+          'loading[0]': false
+        })
         this.handleQuery()
         // res.result 就是云函数 return 的数据
       },
       fail: (err) => {
+        this.setData({
+          'loading[0]': false
+        })
         console.error('调用失败：', err)
       }
     })

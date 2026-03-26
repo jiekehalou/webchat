@@ -1,12 +1,16 @@
 <!--logs.wxml-->
 <view class="container log-list">
-  <tms-button type="primary" bind:click="handleQuery">查询</tms-button>
-  <tms-button type="primary" bind:click="handleUpdate">更新</tms-button>
-  <van-button type="danger" bind:click="handelDel" size="small" round>删除</van-button>
-  <van-button type="primary" bind:click="handleAdd" size="small" round>新增云数据</van-button>
+  <p class="top-p">
+    <tms-button type="primary" bind:click="handleQuery" loading="{{loading[3]}}">查询</tms-button>
+    <tms-button type="primary" loading="{{loading[2]}}" bind:click="handleUpdate">更新</tms-button>
+    <van-button type="danger" loading="{{loading[1]}}" bind:click="handelDel" size="small" round>删除</van-button>
+    <van-button type="primary" loading="{{loading[0]}}" bind:click="handleAdd" size="small" round>新增云数据</van-button>
+  </p>
 
-  <block wx:for="{{logs}}" wx:for-item="log" wx:key="index">
-    <!-- <text class="log-item">{{index + 1}}. {{log}}</text> -->
-    <van-cell title="{{index + 1}}" value="{{log.name}}" style="width:750rpx" />
-  </block>
+  <div wx:for="{{logs}}" wx:for-item="log" wx:key="index" class="log-item">
+    <text class="item-span">{{index + 1}}</text>
+    <text class="item-span-w2 item-span">{{log.name}}</text>
+    <text class="item-span">{{log.age}}</text>
+    <span class="time">{{log.createTimeFormat}} </span>
+  </div>
 </view>
