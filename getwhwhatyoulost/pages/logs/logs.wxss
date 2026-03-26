@@ -1,5 +1,5 @@
 .log-list {
-  padding: 40rpx;
+  padding: 20rpx;
 }
 
 .top-p {
@@ -8,12 +8,34 @@
   justify-content: space-evenly;
 }
 
+.input-box {
+  padding: 10rpx;
+  margin-bottom: 10rpx;
+  border: 1px solid #ebedf0;
+}
+
+.input {
+  color: #333;
+  font-size: 14px;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 10px;
+  border: 1px solid #999;
+  margin-bottom: 6px;
+}
+
 .log-item {
+  box-sizing: border-box;
   width: 750rpx;
   display: flex;
-  margin: 10rpx;
+  padding:10rpx;
   border-bottom: 1px solid #ebedf0;
 }
+
+.log-item.active {
+  background-color: #B7EB8F;
+}
+
 
 .time {
   flex: 1;

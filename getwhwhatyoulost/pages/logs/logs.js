@@ -3,8 +3,11 @@ const util = require('../../utils/util.js')
 
 Page({
   data: {
+    nameInput: '',
+    ageInput: '',
     loading: [false, false, false, false], //增删改查
-    logs: []
+    logs: [],
+    curId: ''
   },
   cloudInit() {
     // 页面初始化时，确保云环境已初始化（在 app.js 中）
@@ -14,11 +17,22 @@ Page({
     })
   },
   handelDel() {
+    let {
+      curId
+    } = this.data
+    if (!curId) {
+      wx.showToast({
+        title: '请选中一条数据',
+        icon: 'none'
+      });
+      return;
+    }
+
     this.setData({
       'loading[1]': true
     })
     // 调用云函数
-    let id = this.data.logs[0]?._id
+    let id = curId || this.data.logs[0]?._id
     console.log('handelDel', id)
     wx.cloud.callFunction({
       name: 'helloWorld', // 云函数名称
@@ -41,18 +55,32 @@ Page({
     })
   },
   handleUpdate() {
+    let {
+      curId
+    } = this.data
+    if (!curId) {
+      wx.showToast({
+        title: '请选中一条数据',
+        icon: 'none'
+      });
+      return;
+    }
+    let {
+      nameInput,
+      ageInput
+    } = this.data
     this.setData({
       'loading[2]': true
     })
     // 调用云函数
-    let id = this.data.logs[0]?._id
+    let id = curId || this.data.logs[0]?._id
     console.log('更新', id)
     wx.cloud.callFunction({
       name: 'helloWorld', // 云函数名称
       data: { // 传递给云函数的参数
         id,
-        name: '测试更新',
-        age: Math.floor(Math.random() * 100),
+        name: nameInput || '测试更新',
+        age: ageInput || 25,
         TYPE: "update", //add update delete 默认''查询
       },
       success: (res) => {
@@ -104,12 +132,16 @@ Page({
     this.setData({
       'loading[0]': true
     })
+    let {
+      nameInput,
+      ageInput
+    } = this.data
     // 调用云函数
     wx.cloud.callFunction({
       name: 'helloWorld', // 云函数名称
       data: { // 传递给云函数的参数
-        name: '张三',
-        age: 25,
+        name: nameInput||'测试数据',
+        age: ageInput || 25,
         TYPE: "add", //add update delete
       },
       success: (res) => {
@@ -126,6 +158,17 @@ Page({
         })
         console.error('调用失败：', err)
       }
+    })
+  },
+  onRowTap(ev) {
+    let {
+      field
+    } = ev.currentTarget.dataset || {}
+    let {
+      curId
+    } = this.data
+    this.setData({
+      curId: curId === field ? '' : field || ''
     })
   },
   onLoad: function () {

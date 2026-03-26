@@ -1,13 +1,17 @@
 <!--logs.wxml-->
 <view class="container log-list">
+  <p class="input-box">
+    <input class="input" model:value="{{nameInput}}" data-field="searchInput" auto-focus placeholder="姓名" />
+    <input class="input" model:value="{{ageInput}}" data-field="searchInput" placeholder="年龄" />
+  </p>
   <p class="top-p">
+    <van-button type="primary" loading="{{loading[0]}}" bind:click="handleAdd" size="small" round>新增云数据</van-button>
     <tms-button type="primary" bind:click="handleQuery" loading="{{loading[3]}}">查询</tms-button>
     <tms-button type="primary" loading="{{loading[2]}}" bind:click="handleUpdate">更新</tms-button>
     <van-button type="danger" loading="{{loading[1]}}" bind:click="handelDel" size="small" round>删除</van-button>
-    <van-button type="primary" loading="{{loading[0]}}" bind:click="handleAdd" size="small" round>新增云数据</van-button>
   </p>
 
-  <div wx:for="{{logs}}" wx:for-item="log" wx:key="index" class="log-item">
+  <div wx:for="{{logs}}" wx:for-item="log" wx:key="index" class="log-item {{(curId === log._id)?'active':''}}" data-field="{{log._id}}" bind:tap="onRowTap">
     <text class="item-span">{{index + 1}}</text>
     <text class="item-span-w2 item-span">{{log.name}}</text>
     <text class="item-span">{{log.age}}</text>
