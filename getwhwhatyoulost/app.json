@@ -31,15 +31,21 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "images/bar/home.png",
+        "selectedIconPath": "images/bar/home_select.png"
       },
       {
         "pagePath": "pages/logs/logs",
-        "text": "日志"
+        "text": "日志",
+        "iconPath": "images/bar/log.png",
+        "selectedIconPath": "images/bar/log_select.png"
       },
       {
         "pagePath": "pages/map/map",
-        "text": "地图"
+        "text": "地图",
+        "iconPath": "images/bar/map.png",
+        "selectedIconPath": "images/bar/map_select.png"
       }
     ]
   },
