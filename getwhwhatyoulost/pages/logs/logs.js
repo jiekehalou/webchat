@@ -81,6 +81,7 @@ Page({
         id,
         name: nameInput || '测试更新',
         age: ageInput || 25,
+        createTime: new Date().toISOString(),
         TYPE: "update", //add update delete 默认''查询
       },
       success: (res) => {
