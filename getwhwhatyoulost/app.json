@@ -4,7 +4,7 @@
     "pages/logs/logs",
     "pages/map/map"
   ],
-  "entryPagePath": "pages/logs/logs",
+  "entryPagePath": "pages/index/index",
   "requiredPrivateInfos": [
     "getLocation",
     "onLocationChange",
@@ -19,7 +19,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#07C160",
-    "navigationBarTitleText": "lost and find",
+    "navigationBarTitleText": "失物招领处",
     "navigationBarTextStyle": "black",
     "pageOrientation": "auto"
   },

@@ -7,7 +7,11 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-    <view  class="usermotto">{{motto}}</view >
+  <image src="../../images/banner1.png" mode="" class="home-banner" />
+  <image src="../../images/banner1.png" mode="" class="home-banner  hue-rotate" />
+  <image src="../../images/banner1.png" mode="" class="home-banner saturate" />
+  <image src="../../images/banner1.png" mode="" class="home-banner blur" />
+    <!-- <view  class="usermotto">{{motto}}</view > -->
     <view  class="usermotto-des">
     <icon class="icon-box-img" type="success_no_circle" size="12"></icon>
     <text style="margin-left:6px">当前位置:</text><text>{{position}}</text> </view >

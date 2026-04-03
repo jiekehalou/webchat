@@ -1,28 +1,58 @@
 /**index.wxss**/
+.home-banner {
+  width: 750rpx;
+}
+.home-banner.hue-rotate {
+  filter: hue-rotate(90deg);
+  /*色相旋转*/
+}
+.home-banner.saturate {
+  /* filter: grayscale(100%); */
+  /*filter: blur(8px);*/
+  /*高斯模糊*/
+  /*filter: hue-rotate(90deg);*/
+  /*色相旋转*/
+  filter:hue-rotate(180deg) saturate(200%);
+  /*饱和度*/
+}
+
+
+
+.home-banner.blur {
+  filter: blur(3px);
+  /*高斯模糊*/
+}
+
 .userinfo {
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
+  right: 0;
+  padding: 10rpx;
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+  width: 68rpx;
+  height: 68rpx;
+  margin: 10rpx;
   border-radius: 50%;
 }
 
 .userinfo-nickname {
   color: #aaa;
+  font-size: 12px;
 }
 
 .usermotto {
   margin-top: 200px;
 }
+
 .usermotto {
   margin-top: 200px;
 }
+
 .usermotto-des {
   margin-top: 20px;
-  color:#999
+  color: #999
 }

@@ -1,7 +1,7 @@
 <!--logs.wxml-->
 <view class="container log-list">
   <p class="input-box">
-    <input class="input" model:value="{{nameInput}}" data-field="searchInput" auto-focus placeholder="姓名" />
+    <input class="input" model:value="{{nameInput}}" data-field="searchInput"  placeholder="姓名" />
     <input class="input" model:value="{{ageInput}}" data-field="searchInput" placeholder="年龄" />
   </p>
   <p class="top-p">

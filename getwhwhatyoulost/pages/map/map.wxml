@@ -10,7 +10,7 @@
 <view class="search-wrp" style="padding-top: {{menuRect.bottom + menuRect.height/2}}px;">
   <view class="search">
     <image class="location" src="../../images/pokemon_location.png" />
-    <input class="input" model:value="{{searchInput}}" data-field="searchInput" auto-focus placeholder="搜索" />
+    <input class="input" model:value="{{searchInput}}" data-field="searchInput" placeholder="搜索" />
     <button class="mini-btn" type="warn" size="mini" bindtap="onSearch">搜索</button>
   </view>
 </view>
