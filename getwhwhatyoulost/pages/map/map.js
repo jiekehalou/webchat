@@ -1,6 +1,6 @@
 // pages/map/map.js
 import {
-  KEY
+  KEY,BAIDUKEY
 } from "../../config/index.js"
 
 const {
@@ -9,6 +9,7 @@ const {
 const menuRect = wx.getMenuButtonBoundingClientRect()
 const sheetHeight = (windowHeight - menuRect.height) * 0.5
 console.log('KEY', KEY)
+console.log('BAIDUKEY', BAIDUKEY)
 // console.log('menuRect:', menuRect)
 Page({
 
@@ -16,13 +17,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    searchInput:"",
+    searchInput: "",
     latitude: 39.9,
     longitude: 116.38,
     menuRect,
     sheetHeight,
     minSize: 0.3,
     maxSize: 0.5,
+    tarPosition: {
+      latitude: 33.62,
+      longitude: 113.37,
+    },
     weatherInfo: {
 
     },
@@ -96,6 +101,69 @@ Page({
       }
     })
   },
+  //小程序调用返回的数据格式不一样，使用的是差值结果
+  drawCarLines(res) {
+    let {tarPosition} = this.data
+    var _this = this
+    wx.request({
+      // url: 'https://api.map.baidu.com/direction/v2/driving',//百度
+      url: 'https://apis.map.qq.com/ws/direction/v1/driving',//腾讯
+      method: 'GET',
+      data: {
+        // ak: BAIDUKEY,
+        // origin: `${this.data.latitude},${this.data.longitude}`,
+        // destination:`${tarPosition.latitude},${tarPosition.longitude}`,
+        key: KEY,
+        from: `${this.data.latitude},${this.data.longitude}`,
+        to:`${tarPosition.latitude},${tarPosition.longitude}`,
+        // waypoints=39.111,116.112;39.112,116.113 //途经点
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        let {
+          result:{routes}
+        } = res.data
+        let route = routes[0]
+        // console.log('routes:',routes)
+        // console.log('polyline:',route.polyline)
+
+        var coors = route.polyline, pl = [];
+        //坐标解压（返回的点串坐标，通过前向差分进行压缩）
+        var kr = 1000000;
+        for (var i = 2; i < coors.length; i++) {
+          coors[i] = Number(coors[i - 2]) + Number(coors[i]) / kr;
+        }
+        //将解压后的坐标放入点串数组pl中
+        for (var i = 0; i < coors.length; i += 2) {
+          pl.push({ latitude: coors[i], longitude: coors[i + 1] })
+        }
+        _this.setData({
+          // 将路线的起点设置为地图中心点
+          // latitude:pl[0].latitude,
+          // longitude:pl[0].longitude,
+          // 绘制路线
+          polylines: [{
+            points: pl,
+            color: '#58c16c',
+            width: 6,
+            borderColor: '#2f693c',
+            borderWidth: 1
+          }]
+        })
+        // let {
+        //   realtime = []
+        // } = result
+        // let d = (realtime || [])[0] || {}
+        // self.setData({
+        //   weatherInfo: d
+        // })
+      }
+    })
+
+
+  },
   addMark(res) {
     let {
       longitude: lon,
@@ -124,8 +192,7 @@ Page({
       },
       {
         id: Date.now(),
-        latitude: 33.62,
-        longitude: 113.37,
+        ...this.data.tarPosition,
         iconPath: "/images/pin.png",
         width: 48,
         height: 48,
@@ -162,6 +229,12 @@ Page({
       url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=您的KEY`,
       success: (res) => {
         console.log('详细地址:', res.data.result.address);
+      },
+      fail:(res)=>{
+        wx.showToast({
+          title: res.message|| '规划失败',
+          icon: 'error'
+        });
       }
     });
   },
@@ -180,6 +253,7 @@ Page({
         }, () => {
           this.addMark(res)
           this.getWeather()
+          this.drawCarLines(res)
         })
       },
       fail: (err) => {
@@ -192,7 +266,9 @@ Page({
     })
   },
   onSearch(e) {
-    let {searchInput} = this.data;
-    console.log('onSearch',searchInput)
+    let {
+      searchInput
+    } = this.data;
+    console.log('onSearch', searchInput)
   }
 })

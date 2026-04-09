@@ -5,7 +5,7 @@
     "pages/map/map",
     "pages/home/home"
   ],
-  "entryPagePath": "pages/index/index",
+  "entryPagePath": "pages/map/map",
   "requiredPrivateInfos": [
     "getLocation",
     "onLocationChange",

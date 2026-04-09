@@ -1,3 +1,5 @@
 const KEY ='VUDBZ-ZUO6M-IYQ6P-6PMDU-7WTKE-LLBDS'
+const BAIDUKEY ='TuQT2tHfWazsNNmAoF5wNvy23E0lglR9' //地点检索 天气查询API
 
-export {KEY}
+
+export {KEY,BAIDUKEY}

@@ -14,20 +14,3 @@
     <button class="mini-btn" type="warn" size="mini" bindtap="onSearch">搜索</button>
   </view>
 </view>
-<!-- <draggable-sheet class="sheet" style="height: {{sheetHeight}}px;" initial-child-size="{{minSize}}" min-child-size="{{minSize}}" max-child-size="{{maxSize}}" snap="{{false}}" snap-sizes="{{[]}}" worklet:onsizeupdate="onSizeUpdate">
-  <scroll-view associative-container="draggable-sheet" class="scrollable" scroll-y type="custom" show-scrollbar="{{false}}">
-    <sticky-section>
-      <sticky-header>
-        <view class="bar">
-          <view class="indicator" />
-        </view>
-        <view class="row title">
-          <text>Latest in the area</text>
-          <view class="outer-circle center">
-            <view class="inner-circle" />
-          </view>
-        </view>
-      </sticky-header>
-    </sticky-section>
-  </scroll-view>
-</draggable-sheet> -->
