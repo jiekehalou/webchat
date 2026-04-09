@@ -114,7 +114,7 @@ Page({
         this.setData({
           logs: arr.map(o => ({
             ...o,
-            createTimeFormat: new Date(o.createTime).toISOString().slice(0, 16).replace('T', ' ')
+            createTimeFormat: util.formatTime(new Date(o.createTime),'YYYY-MM-DD HH:mm')
           }))
         })
         this.setData({
@@ -141,7 +141,7 @@ Page({
     wx.cloud.callFunction({
       name: 'helloWorld', // 云函数名称
       data: { // 传递给云函数的参数
-        name: nameInput||'测试数据',
+        name: nameInput || '测试数据',
         age: ageInput || 25,
         TYPE: "add", //add update delete
       },
@@ -161,6 +161,17 @@ Page({
       }
     })
   },
+  onDoubleTap(ev) {
+    let {
+      field
+    } = ev.currentTarget.dataset || {}
+
+    let row = this.data.logs.find(o => o._id === field)
+    this.setData({
+      nameInput: row?.name || "",
+      ageInput: row?.age || "",
+    })
+  },
   onRowTap(ev) {
     let {
       field
@@ -171,6 +182,9 @@ Page({
     this.setData({
       curId: curId === field ? '' : field || ''
     })
+    if (curId === field) {
+      this.onDoubleTap(ev)
+    }
   },
   onLoad: function () {
     // this.setData({

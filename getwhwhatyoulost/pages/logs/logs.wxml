@@ -1,7 +1,7 @@
 <!--logs.wxml-->
 <view class="container log-list">
   <p class="input-box">
-    <input class="input" model:value="{{nameInput}}" data-field="searchInput"  placeholder="姓名" />
+    <input class="input" model:value="{{nameInput}}" data-field="searchInput" placeholder="姓名" />
     <input class="input" model:value="{{ageInput}}" data-field="searchInput" placeholder="年龄" />
   </p>
   <p class="top-p">
@@ -11,10 +11,10 @@
     <van-button type="danger" loading="{{loading[1]}}" bind:click="handelDel" size="small" round>删除</van-button>
   </p>
 
-  <div wx:for="{{logs}}" wx:for-item="log" wx:key="index" class="log-item {{(curId === log._id)?'active':''}}" data-field="{{log._id}}" bind:tap="onRowTap">
-    <text class="item-span">{{index + 1}}</text>
-    <text class="item-span-w2 item-span">{{log.name}}</text>
-    <text class="item-span">{{log.age}}</text>
+  <div wx:for="{{logs}}" wx:for-item="log" wx:key="index" class="log-item {{(curId === log._id)?'active':''}} {{index%2 ? 'stripes-bg':''}}" data-field="{{log._id}}" bind:tap="onRowTap">
+    <text class="item-span">{{index + 1}}.</text>
+    <text class="item-span-w2 item-span name">{{log.name}}</text>
+    <text class="item-span age">{{log.age}}</text>
     <span class="time">{{log.createTimeFormat}} </span>
   </div>
 </view>
