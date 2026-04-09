@@ -31,9 +31,7 @@
   padding: 10rpx;
 }
 
-.log-item.active {
-  background-color: #B7EB8F;
-}
+
 
 .name {
   font-weight: 500;
@@ -43,7 +41,7 @@
   color: #666
 }
 
-.stripes-bg {
+.stripes-bg:not(.active) {
   background: linear-gradient(45deg,
       #f0f0f0 25%,
       #e0e0e0 25%,
@@ -53,6 +51,10 @@
       #e0e0e0 75%);
   background-size: 40px 40px;
   /* 控制条纹密度 */
+}
+
+.log-item.active {
+  background-color: #B7EB8F;
 }
 
 .time {
