@@ -1,0 +1,337 @@
+/* pages/index/index.wxss */
+.nature-scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* 天空背景 */
+.sky {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    #87CEEB 0%, 
+    #B0E0E6 30%, 
+    #E0F6FF 60%, 
+    #F0FFF0 80%, 
+    #90EE90 100%);
+}
+
+/* 太阳 */
+.sun {
+  position: absolute;
+  top: 100rpx;
+  right: 200rpx;
+  width: 160rpx;
+  height: 160rpx;
+  background: radial-gradient(circle, #FFD700 0%, #FFA500 70%);
+  border-radius: 50%;
+  box-shadow: 0 0 80rpx #FFD700, 0 0 160rpx #FFA500;
+  animation: sunPulse 4s ease-in-out infinite;
+}
+
+@keyframes sunPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* 云朵 */
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 200rpx;
+  opacity: 0.9;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 200rpx;
+}
+
+.cloud1 {
+  width: 200rpx;
+  height: 80rpx;
+  top: 160rpx;
+  left: -300rpx;
+  animation: cloudMove 60s linear infinite;
+}
+
+.cloud1::before {
+  width: 100rpx;
+  height: 100rpx;
+  top: -50rpx;
+  left: 20rpx;
+}
+
+.cloud1::after {
+  width: 120rpx;
+  height: 80rpx;
+  top: -30rpx;
+  right: 20rpx;
+}
+
+.cloud2 {
+  width: 240rpx;
+  height: 90rpx;
+  top: 300rpx;
+  left: -400rpx;
+  animation: cloudMove 80s linear infinite;
+  animation-delay: 15s;
+}
+
+.cloud2::before {
+  width: 120rpx;
+  height: 110rpx;
+  top: -60rpx;
+  left: 30rpx;
+}
+
+.cloud2::after {
+  width: 140rpx;
+  height: 90rpx;
+  top: -40rpx;
+  right: 30rpx;
+}
+
+.cloud3 {
+  width: 180rpx;
+  height: 70rpx;
+  top: 240rpx;
+  left: -240rpx;
+  animation: cloudMove 70s linear infinite;
+  animation-delay: 30s;
+}
+
+.cloud3::before {
+  width: 90rpx;
+  height: 90rpx;
+  top: -44rpx;
+  left: 16rpx;
+}
+
+.cloud3::after {
+  width: 110rpx;
+  height: 70rpx;
+  top: -24rpx;
+  right: 16rpx;
+}
+
+@keyframes cloudMove {
+  from { left: -400rpx; }
+  to { left: calc(100% + 400rpx); }
+}
+
+/* 地面 */
+.ground {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 35%;
+  background: linear-gradient(to bottom, 
+    #90EE90 0%, 
+    #228B22 40%, 
+    #006400 100%);
+  border-radius: 50% 50% 0 0 / 20% 20% 0 0;
+}
+
+/* 树木容器 */
+.trees {
+  position: absolute;
+  bottom: 25%;
+  width: 100%;
+  height: 600rpx;
+  transition: transform 0.3s ease-out;
+}
+
+/* 树的基础样式 */
+.tree {
+  position: absolute;
+  bottom: 0;
+}
+
+.tree-trunk {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to right, #8B4513, #A0522D, #8B4513);
+  border-radius: 10rpx;
+}
+
+.tree-crown {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, #228B22 0%, #006400 100%);
+  border-radius: 50%;
+  animation: treeSway 4s ease-in-out infinite;
+}
+
+@keyframes treeSway {
+  0%, 100% { transform: translateX(-50%) rotate(-2deg); }
+  50% { transform: translateX(-50%) rotate(2deg); }
+}
+
+/* 不同大小和位置的树 */
+.tree1 {
+  left: 5%;
+}
+.tree1 .tree-trunk {
+  width: 40rpx;
+  height: 160rpx;
+}
+.tree1 .tree-crown {
+  width: 200rpx;
+  height: 240rpx;
+  animation-delay: 0s;
+}
+
+.tree2 {
+  left: 15%;
+}
+.tree2 .tree-trunk {
+  width: 50rpx;
+  height: 200rpx;
+}
+.tree2 .tree-crown {
+  width: 260rpx;
+  height: 300rpx;
+  animation-delay: 0.5s;
+}
+
+.tree3 {
+  left: 28%;
+}
+.tree3 .tree-trunk {
+  width: 36rpx;
+  height: 140rpx;
+}
+.tree3 .tree-crown {
+  width: 180rpx;
+  height: 220rpx;
+  animation-delay: 1s;
+}
+
+.tree4 {
+  right: 25%;
+}
+.tree4 .tree-trunk {
+  width: 44rpx;
+  height: 180rpx;
+}
+.tree4 .tree-crown {
+  width: 240rpx;
+  height: 280rpx;
+  animation-delay: 1.5s;
+}
+
+.tree5 {
+  right: 12%;
+}
+.tree5 .tree-trunk {
+  width: 56rpx;
+  height: 220rpx;
+}
+.tree5 .tree-crown {
+  width: 280rpx;
+  height: 320rpx;
+  animation-delay: 2s;
+}
+
+.tree6 {
+  right: 5%;
+}
+.tree6 .tree-trunk {
+  width: 32rpx;
+  height: 120rpx;
+}
+.tree6 .tree-crown {
+  width: 160rpx;
+  height: 200rpx;
+  animation-delay: 2.5s;
+}
+
+/* 飞鸟 */
+.bird {
+  position: absolute;
+  font-size: 40rpx;
+  animation: birdFly 20s linear infinite;
+}
+
+.bird1 {
+  top: 200rpx;
+  animation-delay: 0s;
+}
+
+.bird2 {
+  top: 260rpx;
+  animation-delay: 3s;
+}
+
+.bird3 {
+  top: 230rpx;
+  animation-delay: 6s;
+}
+
+@keyframes birdFly {
+  from { 
+    left: -100rpx;
+    transform: translateY(0rpx);
+  }
+  25% {
+    transform: translateY(-20rpx);
+  }
+  50% {
+    transform: translateY(10rpx);
+  }
+  75% {
+    transform: translateY(-10rpx);
+  }
+  to { 
+    left: calc(100% + 100rpx);
+    transform: translateY(0rpx);
+  }
+}
+
+/* 页脚 */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 30rpx;
+  background: rgba(0, 100, 0, 0.7);
+  z-index: 10;
+}
+
+.footer-text {
+  color: white;
+  font-size: 28rpx;
+}
+
+/* 装饰性花朵 */
+.flower {
+  position: absolute;
+  bottom: 5%;
+  font-size: 48rpx;
+  animation: flowerSway 3s ease-in-out infinite;
+}
+
+.flower1 { left: 10%; animation-delay: 0s; }
+.flower2 { left: 30%; animation-delay: 0.5s; }
+.flower3 { left: 50%; animation-delay: 1s; }
+.flower4 { left: 70%; animation-delay: 1.5s; }
+.flower5 { left: 90%; animation-delay: 2s; }
+
+@keyframes flowerSway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}

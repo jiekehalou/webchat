@@ -2,9 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/map/map"
+    "pages/map/map",
+    "pages/home/home"
   ],
-  "entryPagePath": "pages/logs/logs",
+  "entryPagePath": "pages/index/index",
   "requiredPrivateInfos": [
     "getLocation",
     "onLocationChange",
@@ -36,6 +37,13 @@
         "selectedIconPath": "images/bar/home_select.png"
       },
       {
+        "pagePath": "pages/home/home",
+        "text": "测试",
+        "iconPath": "images/bar/home.png",
+        "selectedIconPath": "images/bar/home_select.png"
+      },
+     
+      {
         "pagePath": "pages/logs/logs",
         "text": "日志",
         "iconPath": "images/bar/log.png",
@@ -50,9 +58,9 @@
     ]
   },
   "lazyCodeLoading": "requiredComponents",
-    "usingComponents": {
-      "tms-button": "@tmsfe/tms-ui/button/index",
-      "van-button": "@vant/weapp/button/index",
-      "van-cell": "@vant/weapp/cell/index"
-    }
+  "usingComponents": {
+    "tms-button": "@tmsfe/tms-ui/button/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-cell": "@vant/weapp/cell/index"
+  }
 }

@@ -1,0 +1,61 @@
+<!--pages/index/index.wxml-->
+<view class="nature-scene" bindtouchmove="onTouchMove">
+  <!-- 天空背景 -->
+  <view class="sky"></view>
+  
+  <!-- 太阳 -->
+  <view class="sun"></view>
+  
+  <!-- 云朵 -->
+  <view class="cloud cloud1"></view>
+  <view class="cloud cloud2"></view>
+  <view class="cloud cloud3"></view>
+  
+  <!-- 飞鸟 -->
+  <view class="bird bird1">🕊️</view>
+  <view class="bird bird2">🕊️</view>
+  <view class="bird bird3">🕊️</view>
+  
+  <!-- 树木 -->
+  <view class="trees" style="transform: translate({{mouseX * 10}}px, {{mouseY * 5}}px)">
+    <view class="tree tree1">
+      <view class="tree-trunk"></view>
+      <view class="tree-crown"></view>
+    </view>
+    <view class="tree tree2">
+      <view class="tree-trunk"></view>
+      <view class="tree-crown"></view>
+    </view>
+    <view class="tree tree3">
+      <view class="tree-trunk"></view>
+      <view class="tree-crown"></view>
+    </view>
+    <view class="tree tree4">
+      <view class="tree-trunk"></view>
+      <view class="tree-crown"></view>
+    </view>
+    <view class="tree tree5">
+      <view class="tree-trunk"></view>
+      <view class="tree-crown"></view>
+    </view>
+    <view class="tree tree6">
+      <view class="tree-trunk"></view>
+      <view class="tree-crown"></view>
+    </view>
+  </view>
+  
+  <!-- 地面 -->
+  <view class="ground"></view>
+  
+  <!-- 装饰花朵 -->
+  <view class="flower flower1">🌸</view>
+  <view class="flower flower2">🌺</view>
+  <view class="flower flower3">🌼</view>
+  <view class="flower flower4">🌷</view>
+  <view class="flower flower5">🌻</view>
+</view>
+
+<!-- 页脚 -->
+<view class="footer">
+  <text class="footer-text">© 2026 自然主题主页 | 保持对自然的热爱</text>
+</view>
